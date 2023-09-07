@@ -1,4 +1,3 @@
-#GDP Happiness Generosity 
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -16,12 +15,4 @@ df = pd.read_csv('happy.csv')
 figure = px.scatter(x=df[x_axis.lower()], y=df[y_axis.lower()], labels={"x":x_axis, "y":y_axis})
 st.plotly_chart(figure)
 
-
-# def get_data(days):
-#     fake_dates = ["07-09-2023", "08-09-2023","09-09-2023","10-09-2023","11-09-2023"]
-#     fake_temp = [10, 15, 16, 18, 12]
-#     fake_temp = [days * i for i in fake_temp]
-#     return fake_dates, fake_temp   
-
-# d, t = get_data(num_days)
 
