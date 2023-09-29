@@ -34,15 +34,20 @@ class SpeedCalculator(QWidget):
         self.setLayout(grid)
         
     def calculate_speed(self):
-        speed = float(self.distance_input.text()) / float(self.time_input.text())
+        distance = float(self.distance_input.text()) 
+        time = float(self.time_input.text())
+        
+        speed = distance / time
         
         if self.metric_drop.currentText() == 'Metric (Km)':
             metric = 'km/h'
-            self.output_label.setText(f"Average Speed: {speed} {metric}")
+            speed = round(speed, 2)
             
         if self.metric_drop.currentText() == 'Imperial (Mi)':
             metric = 'm/h'
-            self.output_label.setText(f"Average Speed: {speed} {metric}")
+            speed = round(speed * 0.621371, 2)
+            
+        self.output_label.setText(f"Average Speed: {speed} {metric}")
 
             
 app = QApplication(sys.argv)     
