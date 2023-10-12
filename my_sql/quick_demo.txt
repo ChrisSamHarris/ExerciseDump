@@ -1,0 +1,82 @@
+ mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.1.0 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> SHOW DTABASES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DTABASES' at line 1
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> CREATE DATABASE demo;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| demo               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> SHOW TABLES FROM demo;
+Empty set (0.00 sec)
+
+mysql> CREATE TABLE demo( id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), topic VARCHAR(255), mobile VARCHAR(255) );
+ERROR 1046 (3D000): No database selected
+
+mysql> USE demo;
+Database changed
+
+mysql> CREATE TABLE demo( id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), topic VARCHAR(255), mobile VARCHAR(255) );
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SHOW TABLES;
++----------------+
+| Tables_in_demo |
++----------------+
+| demo           |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM demo;
+Empty set (0.01 sec)
+
+mysql> INSERT INTO demo (name,topic,mobile)
+    -> VALUES ("Emma Pike", "Tech", "12345");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM demo;
++----+-----------+-------+--------+
+| id | name      | topic | mobile |
++----+-----------+-------+--------+
+|  1 | Emma Pike | Tech  | 12345  |
++----+-----------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO demo (name,topic,mobile) VALUES ("John Smith", "business", "1237775");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> EXIT;
+Bye
